@@ -1,6 +1,9 @@
+
+
 .heading{
   text-align: center;
   color: blue;
+
 }
 
 .subheading{
@@ -9,10 +12,23 @@
 }
 
 .image{
-height: 600px;
-width: 950px;
-margin-left: 400px;
+height:400px;
+width: 750px;
+margin-left: 1350px;
 margin-top: 20px;
 }
 
+.teacher{
+ font-size: 30px;
+  margin-left: 1250px;
+  margin-top: 50px;
+  color: blueviolet;
+}
+
+.student{
+  font-size: 30px;
+   margin-left: 2050px;
+   margin-top: -60px;
+   color: blueviolet;
+ }
 
