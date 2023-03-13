@@ -1,0 +1,16 @@
+.heading{
+  text-align: center;
+  color: blue;
+}
+
+.subheading{
+  text-align: center;
+  color: red;
+}
+
+.image{
+height: 600px;
+width: 950px;
+margin-left: 400px;
+margin-top: 20px;
+}
