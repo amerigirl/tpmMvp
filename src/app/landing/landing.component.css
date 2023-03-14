@@ -1,42 +1,29 @@
-
+.mediaInfo{
+  display: flex;
+  justify-content: center;
+}
 
 .heading{
-  text-align: center;
   color: blue;
   margin-top: 50px;
 }
 
 .subheading{
-  text-align: center;
   color: red;
 }
 
 .image{
 height:400px;
-width: 750px;
-margin-left: 1350px;
-margin-top: 20px;
+
 }
 
 .teacher{
  font-size: 30px;
-  margin-left: 1250px;
-  margin-top: 50px;
-  color: blueviolet;
+ color: blueviolet;
 }
 
 .student{
   font-size: 30px;
-   margin-left: 2050px;
-   margin-top: -80px;
-   color: blueviolet;
- }
-
- .teacherButton {
-  margin-left: 1300px;
- }
-
- .studentButton{
-  margin-left: 2100px;
+  color: blueviolet;
  }
 
