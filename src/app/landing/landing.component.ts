@@ -9,9 +9,5 @@ import { Component } from '@angular/core';
 
 export class LandingComponent {
 
-toTeacher(){
-  alert("teacher method works");
-
-}
 
 }

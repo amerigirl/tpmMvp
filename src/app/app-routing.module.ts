@@ -4,12 +4,12 @@ import { TeacherPortalComponent } from './teacher-portal/teacher-portal.componen
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-  { path: 'landingComponent', component: LandingComponent },
-  { path: 'teacherPortalComponent', component: TeacherPortalComponent },
-];
-
+  { path: 'landing', component: LandingComponent },
+  { path: 'teacherPortal', component: TeacherPortalComponent },
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [LandingComponent, TeacherPortalComponent]
