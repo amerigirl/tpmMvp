@@ -37,9 +37,10 @@ position: sticky;
 
  .teacherButton{
   margin-left: 1100px;
-  
+    font-size: large; 
  }
 
  .studentButton{
   margin-left: 1680px;
- }
+ 
+}

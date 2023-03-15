@@ -23,3 +23,21 @@
   font-size: 40px;
   color: green;
 }
+
+.view{
+margin-left: 950px;
+font-size: 20px;
+margin-top: 50px;
+}
+
+.create{
+margin-left: 500px;
+font-size: 20px;
+margin-top: 50px;
+}
+
+.edit{
+  margin-left: 1250px;
+  margin-top: 70px;
+  font-size: 20px;
+}
