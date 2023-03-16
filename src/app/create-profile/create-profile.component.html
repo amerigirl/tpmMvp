@@ -1,52 +1,51 @@
-
-<div>
-   <h1 class="title">Let's Create a New Profile!</h1>
+<body>
+    <div>
+        <h1 class="title">Let's Create a New Profile!</h1>
+        <br>
+        <h3 class="subHeading">Fill out the information below to create your profile.</h3> 
+    </div>
     <br>
-    <h3 class="subHeading">Fill out the information below to create your profile.</h3> 
-</div>
-<br>
-<div class="container">
 
-    <form>
-        <label>Name</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>Street Address</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>City</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>State</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>Zip Code</label><br>
-        <input type="text">
-        <br>
-        <br>
-        <label>Street Address</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>Phone Number</label><br>
-        <input required type="text" placeholder="(123) 456-7890">
-        <br>
-        <br>
-        <label>Email Address</label><br>
-        <input required type="text">
-        <br>
-        <br>
-        <label>Work Location</label><br>
+  <div class="container">
 
-        <input required type="text" placeholder="virtual  or  in-person">
-    </form>
-    <br>
-    <br>
-    <button>Submit</button>
-</div>
+        <form #createProfile="ngForm">
+            <label>Name</label><br>
+            <input required type="text" name="name" ngModel>
+            <br>
+            <br>
+            <label>Street Address</label><br>
+            <input required type="text" name="address" ngModel>
+            <br>
+            <br>
+            <label>City</label><br>
+            <input required type="text" name="city">
+            <br>
+            <br>
+            <label>State</label><br>
+            <input required type="text" name="state">
+            <br>
+            <br>
+            <label>Zip Code</label><br>
+            <input type="text" name="zipcode">
+            <br>
+            <br>
+            <label>Phone Number</label><br>
+            <input required type="text" placeholder="(123) 456-7890" name="phone">
+            <br>
+            <br>
+            <label>Email Address</label><br>
+            <input required type="text">
+            <br>
+            <br>
+            <label>Work Location</label><br>
+            <input required type="text" placeholder="virtual or in-person" name="location">
+        </form>
+        <br>
+        <br>
+        <button>Submit</button>
+
+    </div>   
+</body>
+
 
 

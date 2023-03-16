@@ -6,20 +6,24 @@ import { AppComponent } from './app.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-  routingComponents,
-  CreateProfileComponent,
-  ViewProfileComponent,
-  EditProfileComponent
+    routingComponents,
+    CreateProfileComponent,
+    ViewProfileComponent,
+    EditProfileComponent,
   ],
+
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
