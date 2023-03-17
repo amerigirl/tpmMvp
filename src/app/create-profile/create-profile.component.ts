@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,9 +12,18 @@ import { Component } from '@angular/core';
 
 export class CreateProfileComponent {
 
+  constructor(private http: HttpClient){
+    
+  }
+
   onProfileCreate(newProfile: { name: string, address: string, city:string, state:string,
                               zipcode:number, phone:string, email:string, location: string}) {
-     console.log(newProfile);
-     console.log("working")
+    console.log(newProfile);
+    this.http.post('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json', newProfile)
+    .subscribe((res) => {
+      console.log(res)
+    })
+
   }
+
 }
