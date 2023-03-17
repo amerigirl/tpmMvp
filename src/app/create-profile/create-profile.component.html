@@ -2,49 +2,50 @@
     <div>
         <h1 class="title">Let's Create a New Profile!</h1>
         <br>
-        <h3 class="subHeading">Fill out the information below to create your profile.</h3> 
+        <h3 class="subHeading">Fill out the information below to create your profile.</h3>
     </div>
     <br>
 
   <div class="container">
-
-        <form #createProfile="ngForm">
+    <div>
+      <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
+        <form #profile="ngForm"  (ngSubmit)="onCreateProfile(profile.value)">
             <label>Name</label><br>
-            <input required type="text" name="name" ngModel>
+            <input required type="text" ngModel name="name" >
             <br>
             <br>
             <label>Street Address</label><br>
-            <input required type="text" name="address" ngModel>
+            <input required type="text" ngModel name="address" >
             <br>
             <br>
             <label>City</label><br>
-            <input required type="text" name="city">
+            <input required type="text" ngModel name="city" >
             <br>
             <br>
             <label>State</label><br>
-            <input required type="text" name="state">
+            <input required type="text" ngModel name="state" >
             <br>
             <br>
             <label>Zip Code</label><br>
-            <input type="text" name="zipcode">
+            <input type="text" ngModel name="zipcode" >
             <br>
             <br>
             <label>Phone Number</label><br>
-            <input required type="text" placeholder="(123) 456-7890" name="phone">
+            <input required type="text" placeholder="(123) 456-7890" name="phone" ngModel>
             <br>
             <br>
             <label>Email Address</label><br>
-            <input required type="text">
+            <input required type="text" ngModel name="email" >
             <br>
             <br>
             <label>Work Location</label><br>
-            <input required type="text" placeholder="virtual or in-person" name="location">
+            <input required type="text" placeholder="virtual or in-person" ngModel name="location">
         </form>
         <br>
         <br>
-        <button>Submit</button>
-
-    </div>   
+        <button type="submit">Submit</button>
+    </div>
+  </div>
 </body>
 
 
