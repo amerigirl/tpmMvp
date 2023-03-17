@@ -7,43 +7,46 @@
     <br>
 
   <div class="container">
-    <div>
+    <div class="form">
       <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
-        <form #profile="ngForm"  (ngSubmit)="onCreateProfile(profile.value)">
+        <form #cForm="ngForm" (ngSubmit)="onProfileCreate(cForm.value)">
             <label>Name</label><br>
-            <input required type="text" ngModel name="name" >
+            <input  ngModel name="firstName" #firstName="ngModel" required type="text" >
             <br>
             <br>
             <label>Street Address</label><br>
-            <input required type="text" ngModel name="address" >
+            <input  ngModel type="text"  name="address" >
             <br>
             <br>
             <label>City</label><br>
-            <input required type="text" ngModel name="city" >
+            <input  ngModel type="text" name="city" >
             <br>
             <br>
             <label>State</label><br>
-            <input required type="text" ngModel name="state" >
+            <input  ngModel type="text"  name="state" >
             <br>
             <br>
             <label>Zip Code</label><br>
-            <input type="text" ngModel name="zipcode" >
+            <input type="text" name="zipcode" >
             <br>
             <br>
             <label>Phone Number</label><br>
-            <input required type="text" placeholder="(123) 456-7890" name="phone" ngModel>
+            <input  ngModel type="text" placeholder="(123) 456-7890" name="phone" >
             <br>
             <br>
             <label>Email Address</label><br>
-            <input required type="text" ngModel name="email" >
+            <input  ngModel type="text"  name="email" >
             <br>
             <br>
             <label>Work Location</label><br>
-            <input required type="text" placeholder="virtual or in-person" ngModel name="location">
+            <input  ngModel type="text" placeholder="virtual or in-person"  name="location">
+            <br>
+            <br>
+          
+            <input type="submit" value="Submit">
         </form>
         <br>
         <br>
-        <button type="submit">Submit</button>
     </div>
   </div>
 </body>

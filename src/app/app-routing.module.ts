@@ -10,8 +10,9 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'teacherPortal', component: TeacherPortalComponent },
   { path: 'editProfile', component: EditProfileComponent },
-  { path: 'createProfile', component: CreateProfileComponent },
   { path: 'viewProfile', component: ViewProfileComponent },
+  { path: 'createProfile', component: CreateProfileComponent },
+
 
 ]
 @NgModule({
@@ -21,8 +22,8 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [
-  LandingComponent, 
-  TeacherPortalComponent, 
+  LandingComponent,
+  TeacherPortalComponent,
   EditProfileComponent,
   CreateProfileComponent,
   ViewProfileComponent
