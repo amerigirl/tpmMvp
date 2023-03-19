@@ -23,7 +23,7 @@ export class ProfileService{
 
   }
 
-  //you call it here because when the page loads, it will then list all the things in the database
+  //you call it here because when the page loads, it will then list all the things in the database, yea?
 
   fetchprofile(){
     this.fetchProfiles();

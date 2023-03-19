@@ -24,15 +24,15 @@ export class CreateProfileComponent implements OnInit {
   }
 
 
-
   ngOnInit(){
   this.fetchProfiles();
   }
 
-  onProfilesFetch(){  //why do we need this method?
+  privateonProfilesFetch(){  //why do we need this method?
   this.fetchProfiles();
   }
-//"<{[key: string]: Profile}>" takes what comes gack and puts it in the key/value form (so does lin 55 in the push method)
+
+  //accessing the service via profile.service
   private fetchProfiles(){
    this.profileService.fetchprofile();
 
