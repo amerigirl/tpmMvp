@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
+import { Profile } from '../model/products';
 
 
 @Component({
@@ -12,18 +13,17 @@ import { map } from 'rxjs';
 
 
 export class CreateProfileComponent implements OnInit {
+  allProfiles: Profile[] = [];
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient){}
 
-  }
 
-  onProfileCreate(newProfile: { name: string, address: string, city:string, state:string,
-                              zipcode:number, phone:string, email:string, location: string}) {
-    //console.log(newProfile);
+  onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:number, phone:string, email:string, location: string}) {
 
     const headers = new HttpHeaders({'myHeader': 'profile'});
 
-    this.http.post('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json', newProfile, {headers: headers})
+      //this post request takes 3 params
+    this.http.post<{name: string}>('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json', newProfile, {headers: headers})
     .subscribe((res) => {
       console.log(res)
     })
@@ -38,28 +38,28 @@ export class CreateProfileComponent implements OnInit {
   this.fetchProfiles();
   }
 
-  onProfilesFetch(){  //why do we need this method
+  onProfilesFetch(){  //why do we need this method?
   this.fetchProfiles();
   }
-
+//"<{[key: string]: Profile}>" takes what comes gack and puts it in the key/value form (so does lin 55 in the push method)
   private fetchProfiles(){
-    this.http.get('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json')
+    this.http.get<{[key: string]: Profile}>('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json')
 
-    /*
-      the pipe transforms the response so that it is more readable in the console
-    */
+    //the pipe transforms the response so that it is more readable
+
     .pipe(map((res: any)=>{
       const profiles = [];
-
-        for(const key in res) {
-          if(res.hasOwnProperty(key))
-          profiles.push({...res[key], id: key})
+      //loops through keys in the response, returns matches from the server
+      for(const key in res) {
+        if(res.hasOwnProperty(key))
+        profiles.push({...res[key], id: key})
         }
         return profiles;
       }))
-
-      .subscribe((res)=>{
-      console.log(res)
+//profiles = res; response from the pipe
+      .subscribe((profiles)=>{
+      console.log(profiles)
+      this.allProfiles = profiles;
     })
 
   }
