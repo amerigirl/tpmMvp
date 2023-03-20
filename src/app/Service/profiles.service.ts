@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs";
-import { Profile } from "../model/products";
+import { Profile } from "../model/profile";
 
 @Injectable({providedIn: "root"})
 export class ProfileService{

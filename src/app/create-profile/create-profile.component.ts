@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
-import { Profile } from '../model/products';
+import { Profile } from '../model/profile';
 import { ProfileService } from '../Service/profiles.service';
 
 
@@ -13,7 +13,7 @@ import { ProfileService } from '../Service/profiles.service';
 
 
 
-export class CreateProfileComponent implements OnInit {
+export class CreateProfileComponent {
   allProfiles: Profile[] = [];
 
   constructor(private http: HttpClient, private profileService: ProfileService){}
@@ -23,19 +23,4 @@ export class CreateProfileComponent implements OnInit {
     this.profileService.createProfile(newProfile);
   }
 
-
-  ngOnInit(){
-  this.fetchProfiles();
-  }
-
-  privateonProfilesFetch(){  //why do we need this method?
-  this.fetchProfiles();
-  }
-
-  //accessing the service via profile.service
-  private fetchProfiles(){
-   this.profileService.fetchprofile();
-
-  }
-
-}
+ }
