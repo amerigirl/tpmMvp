@@ -52,13 +52,7 @@ this.profileService.createProfile(newProfile);
   //gets the product via id
     let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
     console.log(currentProduct);
-    // this.form.setValue({
 
-    // });
-
-    // this.form.setValue({
-
-    // });
 
   }
 }

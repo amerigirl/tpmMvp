@@ -2,9 +2,34 @@
     <div>
         <h1 class="title">Let's Create a New Profile!</h1>
         <br>
-        <h3 class="subHeading">Fill out the information below to create your profile.</h3>
+        <h4 class="subHeading">You can view and update your current profile, or create another one below!</h4>
     </div>
     <br>
+<div>
+  <h2>Current profiles</h2>
+<br>
+<div>
+  <table>
+    <tr>
+      <th>#</th>
+      <th> Name</th>
+      <th>Address</th>
+      <th>Phone </th>
+    </tr>
+    <br>
+    <tr *ngFor="let profile of allProfiles; index as i" >
+      <td>{{i + 1 }}</td>
+      <td>{{profile.name}}</td>
+      <td>{{profile.address}}</td>
+      <td>{{profile.phone}}</td>
+      <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
+
+      <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
+    </tr>
+  </table>
+</div>
+
+</div>
 
   <div class="container">
     <div class="form">
