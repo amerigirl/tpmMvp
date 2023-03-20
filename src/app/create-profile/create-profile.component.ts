@@ -33,4 +33,8 @@ export class CreateProfileComponent {
 
   }
 
+  verificationAlert(form:string){
+    alert("Form Submitted!")
+  }
+
  }
