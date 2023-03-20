@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProfileService} from '../Service/profiles.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../model/profile';
 import { map } from 'rxjs';
-
+import { NgForm } from '@angular/forms';
+import { CreateProfileComponent } from '../create-profile/create-profile.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,20 +13,26 @@ import { map } from 'rxjs';
 })
 export class EditProfileComponent implements OnInit {
 
+    allProfiles: Profile[] = [];
+
+
 ngOnInit(){
   this.privateonProfilesFetch();
   }
 
 
+
+
 constructor(private http: HttpClient, private profileService: ProfileService){}
-allProfiles: Profile[] = [];
+
+
 createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:number, phone:string, email:string, location: string}){
 this.profileService.createProfile(newProfile);
 }
 
 
   privateonProfilesFetch(){  //assigns the profiles we get from the service to the allProfiles array
-    
+
     this.profileService.fetchProfile()
      .subscribe((profiles:any)=>{
       this.allProfiles = profiles;
@@ -37,10 +44,22 @@ this.profileService.createProfile(newProfile);
     .subscribe();
   }
 
+  returnToForm(){
+
+  }
+  onEditClicked(id:string){
+
+  //gets the product via id
+    let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
+    console.log(currentProduct);
+    // this.form.setValue({
+
+    // });
+
+    // this.form.setValue({
+
+    // });
+
+  }
 }
 
- // //accessing the service via profile.service
-    // private fetchProfiles(){
-    //  this.profileService.fetchprofile();
-
-    // }
