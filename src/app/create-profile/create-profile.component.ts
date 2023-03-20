@@ -14,13 +14,23 @@ import { ProfileService } from '../Service/profiles.service';
 
 
 export class CreateProfileComponent {
-  allProfiles: Profile[] = [];
+
 
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
 
   onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:number, phone:string, email:string, location: string}) {
-    this.profileService.createProfile(newProfile);
+      //console.log(newProfile)
+  const headers = new HttpHeaders({'myHeader': 'profile'});
+
+  //this post request takes 3 params
+  this.http.post<{name: string}>(
+      'https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json',
+      newProfile, {headers: headers})
+      .subscribe((res) => {
+        console.log(res)
+      });
+
   }
 
  }

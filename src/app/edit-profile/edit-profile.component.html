@@ -28,12 +28,12 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr >
+                  <tr *ngFor="let profile of allProfiles; index as i" >
 
-                      <td></td>
-                      <td>Name</td>
-                      <td>Address</td>
-                      <td>Phone</td>
+                      <td>{{i + 1 }}</td>
+                      <td>{{profile.name}}</td>
+                      <td>{{profile.address}}</td>
+                      <td>{{profile.phone}}</td>
                       <td>
                           <button type="button" >Edit</button>
                           <button type="button" >Delete</button>

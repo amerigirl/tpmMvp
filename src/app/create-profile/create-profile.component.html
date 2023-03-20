@@ -11,7 +11,7 @@
       <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
         <form #cForm="ngForm" (ngSubmit)="onProfileCreate(cForm.value)">
             <label>Name</label><br>
-            <input  ngModel name="firstName" #firstName="ngModel" required type="text" >
+            <input  ngModel name="name" #name="ngModel" required type="text" >
             <br>
             <br>
             <label>Street Address</label><br>
@@ -42,7 +42,7 @@
             <input  ngModel type="text" placeholder="virtual or in-person"  name="location">
             <br>
             <br>
-          
+
             <input type="submit" value="Submit">
         </form>
         <br>
