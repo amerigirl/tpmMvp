@@ -10,8 +10,8 @@ export class ProfileService{
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:number, phone:string, email:string, location: string}){
- 
+  createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
+
    const headers = new HttpHeaders({'myHeader': 'profile'});
 
    //this post request takes 3 params

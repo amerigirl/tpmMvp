@@ -14,21 +14,25 @@
       <th>#</th>
       <th> Name</th>
       <th>Address</th>
-      <th>Phone </th>
+      <th>Zipcode</th>
+       <th>Phone </th>
     </tr>
     <br>
     <tr *ngFor="let profile of allProfiles; index as i" >
       <td>{{i + 1 }}</td>
       <td>{{profile.name}}</td>
       <td>{{profile.address}}</td>
+          <td>{{profile.zipcode}}</td>
       <td>{{profile.phone}}</td>
-      <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
 
+      <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
       <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
     </tr>
   </table>
 </div>
-
+<br>
+<br>
+<h2>Create New Profile</h2>
 </div>
 
   <div class="container">
@@ -52,7 +56,7 @@
             <br>
             <br>
             <label>Zip Code</label><br>
-            <input type="text" name="zipcode" >
+            <input type="text" name="zipcode" ngModel>
             <br>
             <br>
             <label>Phone Number</label><br>
@@ -68,8 +72,8 @@
             <br>
             <br>
 
-            <input type="submit" value="Submit" (click)="verificationAlert(cForm.value)">
-            <button><a routerLink="/editProfile">View/Edit Profile</a></button>
+            <input type="submit" (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
+
         </form>
         <br>
         <br>

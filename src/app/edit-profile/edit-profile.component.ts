@@ -26,7 +26,7 @@ ngOnInit(){
 constructor(private http: HttpClient, private profileService: ProfileService){}
 
 
-createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:number, phone:string, email:string, location: string}){
+createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
 this.profileService.createProfile(newProfile);
 }
 
