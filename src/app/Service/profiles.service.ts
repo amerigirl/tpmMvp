@@ -10,7 +10,7 @@ export class ProfileService{
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { Name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
+  createProfile(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
 
    const headers = new HttpHeaders({'myHeader': 'profile'});
 
@@ -42,5 +42,10 @@ export class ProfileService{
 
   }
 
-  deleteProfile(){}
+  updateProduct(id: string, value: Profile){
+    this.http.put('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json', value)
+    .subscribe();
+
+  }
+
 }
