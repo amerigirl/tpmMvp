@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { TeacherPortalComponent } from './teacher-portal/teacher-portal.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
-import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    
+
   ],
   bootstrap: [AppComponent]
 })

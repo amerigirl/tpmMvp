@@ -15,31 +15,23 @@
 
       <!--Display product area-->
 
-        <h3 class="heading">All Profiles</h3>
-
     <div>
         <table>
-              <thead>
-                  <tr>
-                      <th>#</th>
-                      <th> Name</th>
-                      <th>Address</th>
-                      <th>Phone </th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let profile of allProfiles; index as i" >
-
-                      <td>{{i + 1 }}</td>
-                      <td>{{profile.name}}</td>
-                      <td>{{profile.address}}</td>
-                      <td>{{profile.phone}}</td>
-                      <td>
-                          <button type="button" >Edit</button>
-                          <button type="button" >Delete</button>
-                      </td>
-                  </tr>
-              </tbody>
+          <tr>
+            <th>#</th>
+            <th> Name</th>
+            <th>Address</th>
+            <th>Phone </th>
+          </tr>
+          <br>
+          <tr *ngFor="let profile of allProfiles; index as i" >
+            <td>{{profile.id}}</td>
+            <td>{{i + 1 }}</td>
+            <td>{{profile.name}}</td>
+            <td>{{profile.address}}</td>
+            <td>{{profile.phone}}</td>
+            <td><button class="btn-delete" (click)="onDeleteProfile(profile.id)">Delete</button></td>
+          </tr>
         </table>
     </div>
 

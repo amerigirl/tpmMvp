@@ -53,9 +53,12 @@ private fetchProfiles(){
       this.allProfiles = profiles;
     })
 
-}
+  }
 
-
+  onDeleteProfile(id: string){
+    this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json')
+    .subscribe();
+  }
 
 }
  // //accessing the service via profile.service
