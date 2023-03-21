@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs';
 import { Profile } from '../model/profile';
 import { ProfileService } from '../Service/profiles.service';
 import { NgForm } from '@angular/forms';
-import { TestBed } from '@angular/core/testing';
 
 
 @Component({
@@ -12,7 +10,6 @@ import { TestBed } from '@angular/core/testing';
   templateUrl: './create-profile.component.html',
   styleUrls: ['./create-profile.component.css']
 })
-
 
 
 export class CreateProfileComponent implements OnInit{
@@ -26,9 +23,9 @@ export class CreateProfileComponent implements OnInit{
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
 
-  //creating profiles
+  //creates profiles
   onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string, id: string}) {
-    //console.log(newProfile)
+    
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
     } else{
@@ -38,9 +35,8 @@ export class CreateProfileComponent implements OnInit{
 
   verificationAlert(form:string){
     alert("Form Submitted!")
-    location.reload();
+   
   }
-
 
   //fetching profiles
   //assigns the profiles we get from the service to the allProfiles array
@@ -59,9 +55,9 @@ export class CreateProfileComponent implements OnInit{
 
   onEditClicked(id:string){
     this.currentProfileId = id;
-      //gets the product via id
+      //gets the product from the backend via id
         let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
-        //console.log(this.form);
+        
         this.form?.setValue({
           name: currentProduct?.name,
           address: currentProduct?.address,
@@ -78,11 +74,11 @@ export class CreateProfileComponent implements OnInit{
 
   }
 
-  //deleting profiles
+  //deletes profiles
   onDeleteProfile(id: string){
-   this.profileService.deleteProfile(id);
-   alert("Profile deleted!");
-   location.reload();
+    this.profileService.deleteProfile(id);
+    alert("Profile deleted!");
+    location.reload();
   }
 
 }

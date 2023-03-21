@@ -1,79 +1,82 @@
 <body>
-    <div>
-        <h1 class="title">Let's Create a New Profile!</h1>
-        <br>
-        <h4 class="subHeading">You can view and update your current profile, or create another one below!</h4>
-    </div>
+  <div>
+    <h1 class="title">Let's Create a New Profile!</h1>
     <br>
-<div>
+    <h4 class="subHeading">You can view and update your current profile, or create another one below!</h4>
+  </div>
+  <br>
+
+  <div>
   <h2>Current profiles</h2>
-<br>
-<div>
-  <table>
-    <tr>
-      <th>#</th>
-      <th> Name</th>
-      <th>Address</th>
-      <th>Zipcode</th>
-       <th>Phone </th>
-    </tr>
-    <br>
-    <br>
-    <tr *ngFor="let profile of allProfiles; index as i" >
+  <br>
+
+  <div>
+    <table>
+      <tr>
+        <th>#</th>
+        <th> Name</th>
+        <th>Address</th>
+        <th>State</th>
+        <th>Email </th>
+        <th>Phone </th>
+      </tr>
+  <br>
+  <br>
+     <tr *ngFor="let profile of allProfiles; index as i" >
       <td>{{i + 1 }}</td>
       <td>{{profile.name}}</td>
       <td>{{profile.address}}</td>
-          <td>{{profile.zipcode}}</td>
+      <td>{{profile.state}}</td>
+      <td>{{profile.email}}</td>
       <td>{{profile.phone}}</td>
 
       <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
       <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
-    </tr>
-  </table>
-</div>
-<br>
-<br>
-<h2>Create New Profile Below</h2>
-</div>
+     </tr>
+   </table>
+  </div>
+  <br>
+  <br>
+  <h2>Create New Profile Below</h2>
+  </div>
 
   <div class="container">
     <div class="form">
-      <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
-        <form #cForm="ngForm" (ngSubmit)="onProfileCreate(cForm.value)">
-            <label>Name</label><br>
-            <input  ngModel name="name" #name="ngModel" required type="text" >
-            <br>
-            <br>
-            <label>Street Address</label><br>
-            <input  ngModel type="text"  name="address" >
-            <br>
-            <br>
-            <label>City</label><br>
-            <input  ngModel type="text" name="city" >
-            <br>
-            <br>
-            <label>State</label><br>
-            <input  ngModel type="text"  name="state" >
-            <br>
-            <br>
-            <label>Zip Code</label><br>
-            <input type="text" name="zipcode" ngModel>
-            <br>
-            <br>
-            <label>Phone Number</label><br>
-            <input  ngModel type="text" placeholder="(123) 456-7890" name="phone" >
-            <br>
-            <br>
-            <label>Email Address</label><br>
-            <input  ngModel type="text"  name="email" >
-            <br>
-            <br>
-            <label>Work Location</label><br>
-            <input  ngModel type="text" placeholder="virtual or in-person"  name="location">
-            <br>
-            <br>
-
-            <input type="submit" (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
+     <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
+      <form #cForm="ngForm" (ngSubmit)="onProfileCreate(cForm.value)">
+        <label>Name</label><br>
+        <input  ngModel name="name" #name="ngModel" required type="text" >
+          <br>
+          <br>
+          <label>Street Address</label><br>
+          <input  ngModel type="text"  name="address" >
+          <br>
+          <br>
+          <label>City</label><br>
+          <input  ngModel type="text" name="city" >
+          <br>
+          <br>
+          <label>State</label><br>
+          <input  ngModel type="text"  name="state" >
+          <br>
+          <br>
+          <label>Zip Code</label><br>
+          <input type="text" name="zipcode" ngModel>
+          <br>
+          <br>
+          <label>Phone Number</label><br>
+          <input  ngModel type="text" placeholder="(123) 456-7890" name="phone" >
+          <br>
+          <br>
+          <label>Email Address</label><br>
+          <input  ngModel type="text"  name="email" >
+          <br>
+          <br>
+          <label>Work Location</label><br>
+          <input  ngModel type="text" placeholder="virtual or in-person"  name="location">
+          <br>
+          <br>
+          <input type="submit" (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
 
         </form>
         <br>

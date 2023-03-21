@@ -12,15 +12,15 @@ export class ProfileService{
   //create profile in the database
   createProfile(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
 
-   const headers = new HttpHeaders({'myHeader': 'profile'});
+    const headers = new HttpHeaders({'myHeader': 'profile'});
 
-   //this post request takes 3 params
-   this.http.post<{name: string}>(
-   'https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json',
-   newProfile, {headers: headers})
-   .subscribe((res) => {
-     console.log(res)
-   });
+    //this post request takes 3 params
+    this.http.post<{name: string}>(
+    'https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json',
+    newProfile, {headers: headers})
+    .subscribe((res) => {
+      console.log(res)
+    });
 
   }
 
@@ -31,11 +31,11 @@ export class ProfileService{
     return this.http.get<{[key: string]: Profile}>('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json')
     .pipe(map((res: any)=>{
     const profiles = [];
-    //loops through keys in the response, returns matches from the server
+      //loops through keys in the response, returns matches from the server
       for(const key in res) {
         if(res.hasOwnProperty(key)) //this is how you check if a property is in an object
         profiles.push({...res[key], id: key});
-       }
+      }
 
     return profiles;
     }));
