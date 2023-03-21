@@ -26,7 +26,7 @@ export class CreateProfileComponent implements OnInit{
 
 
   //creating profiles
-  onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}) {
+  onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string, id: string}) {
     //console.log(newProfile)
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
