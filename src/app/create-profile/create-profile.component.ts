@@ -16,6 +16,7 @@ import { TestBed } from '@angular/core/testing';
 
 
 export class CreateProfileComponent implements OnInit{
+
   allProfiles: Profile[] = [];
   @ViewChild('cForm') form:  NgForm | undefined;
   editmode: boolean = false;
@@ -31,11 +32,13 @@ export class CreateProfileComponent implements OnInit{
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
     } else{
-      this.profileService.updateProduct(this.currentProfileId, newProfile );
+      this.profileService.updateProfile(this.currentProfileId, newProfile );
     }
   }
+
   verificationAlert(form:string){
     alert("Form Submitted!")
+    location.reload();
   }
 
 
@@ -77,8 +80,9 @@ export class CreateProfileComponent implements OnInit{
 
   //deleting profiles
   onDeleteProfile(id: string){
-  this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json')
-    .subscribe();
+   this.profileService.deleteProfile(id);
+   alert("Profile deleted!");
+   location.reload();
   }
 
 }

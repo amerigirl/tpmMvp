@@ -33,7 +33,7 @@ export class ProfileService{
     const profiles = [];
     //loops through keys in the response, returns matches from the server
       for(const key in res) {
-        if(res.hasOwnProperty(key))
+        if(res.hasOwnProperty(key)) //this is how you check if a property is in an object
         profiles.push({...res[key], id: key});
        }
 
@@ -42,10 +42,14 @@ export class ProfileService{
 
   }
 
-  updateProduct(id: string, value: Profile){
+  updateProfile(id: string, value: Profile){
     this.http.put('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json', value)
     .subscribe();
 
   }
 
+  deleteProfile(id: string){
+    this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json')
+    .subscribe();
+  }
 }
