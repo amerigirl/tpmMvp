@@ -24,7 +24,7 @@ export class CreateProfileComponent implements OnInit{
 
 
   //creates profiles
-  onProfileCreate(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string, id: string}) {
+  onProfileCreate(newProfile: { Fname: string, Mname: string, Lname: string, Taddress: string, TemailAddress:string, Tlocation: string, id: string, Tstandard: string}) {
     
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
@@ -59,14 +59,13 @@ export class CreateProfileComponent implements OnInit{
         let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
         
         this.form?.setValue({
-          name: currentProduct?.name,
-          address: currentProduct?.address,
-          city: currentProduct?.city,
-          state: currentProduct?.state,
-          zipcode: currentProduct?.zipcode,
-          phone: currentProduct?.phone,
-          email: currentProduct?.email,
-          location: currentProduct?.location
+          firstName: currentProduct?.Fname,
+          middleName: currentProduct?.Mname,
+          lastName: currentProduct?.Lname,
+          address: currentProduct?.Taddress,
+          email: currentProduct?.TemailAddress,
+          location: currentProduct?.Tlocation,
+          standard: currentProduct?.Tstandard
 
         });
 

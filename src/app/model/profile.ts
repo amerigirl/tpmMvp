@@ -2,18 +2,16 @@ import { NgZone } from "@angular/core";
 
 export class Profile {
 
-constructor(public name: string, public address: string, public city:string, public state:string,
-  public zipcode:string, public phone:string, public email:string, public location: string, public id: string) {
+constructor(public id: string, public Fname: string, public Mname: string, public Lname: string, public Taddress: string, public TemailAddress:string, public Tlocation: string, public Tstandard: string) {
 
-    this.name = name;
-    this.address = address;
-    this.city = city;
-    this.state = state;
-    this.zipcode = zipcode;
-    this.phone = phone;
-    this.email = email;
-    this.location = location;
     this.id = id;
+    this.Fname = Fname;
+    this.Mname = Mname;
+    this.Lname = Lname;
+    this.Taddress = Taddress;
+    this.TemailAddress = TemailAddress;
+    this.Tlocation = Tlocation;
+    this.Tstandard = Tstandard;
   }
 
 }

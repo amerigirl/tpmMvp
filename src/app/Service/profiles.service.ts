@@ -10,7 +10,7 @@ export class ProfileService{
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { name: string, address: string, city:string, state:string, zipcode:string, phone:string, email:string, location: string}){
+  createProfile(newProfile: { Fname: string, Mname: string, Lname: string, Taddress: string, TemailAddress:string, Tlocation: string, Tstandard:string}){
 
     const headers = new HttpHeaders({'myHeader': 'profile'});
 
@@ -28,7 +28,7 @@ export class ProfileService{
   //<{[key: string]: Profile}> sets the structure for the observablet that returns
 
   fetchProfile(){
-    return this.http.get<{[key: string]: Profile}>('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json')
+    return this.http.get<{[key: string]: Profile}>('https://localhost:7142/api/Students')
     .pipe(map((res: any)=>{
     const profiles = [];
       //loops through keys in the response, returns matches from the server
