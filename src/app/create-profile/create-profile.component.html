@@ -14,9 +14,9 @@
     <table>
       <tr>
         <th>#</th>
-        <th> First Name</th>
-        <th> Middle Name</th>
-        <th> Last Name</th>
+        <th> First </th>
+        <th> Middle </th>
+        <th> Last </th>
         <th> Address</th>
         <th> Email </th>
         <th> Location </th>
@@ -30,7 +30,7 @@
       <td>{{profile.Fname}}</td>
       <td>{{profile.Mname}}</td>
       <td>{{profile.Lname}}</td>
-      <td>{{profile.Taddress}}</td>
+      <td>{{profile.TAddress}}</td>
       <td>{{profile.TemailAddress}}</td>
       <td>{{profile.Tlocation}}</td>
       <td>{{profile.Tstandard}}</td>
@@ -50,36 +50,36 @@
     <div class="form">
      <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
      <!--added '[ngModelOptions]="{standalone: true}"' to get rid of ngModel Error in console-->
-      <form #cForm="ngForm"    (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
+      <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
         <label>First Name</label><br>
-        <input  ngModel name="Fname" #name="ngModel" required type="text" [ngModelOptions]="{standalone: true}">
+        <input  ngModel name="Fname" #name="ngModel"  required type="text" >
           <br>
           <br>
           <label>Middle Name</label><br>
-        <input  ngModel name="Mname" #name="ngModel"  type="text" [ngModelOptions]="{standalone: true}">
+        <input  ngModel name="Mname" #name="ngModel"  type="text" >
           <br>
           <br>
           <label>Last Name</label><br>
-          <input  ngModel name="Lname" #name="ngModel" required type="text" [ngModelOptions]="{standalone: true}">
+          <input  ngModel name="Lname" #name="ngModel" required type="text">
             <br>
             <br>
           <label>Street Address</label><br>
-          <input  ngModel type="text"  #name="ngModel" Name="FAddress" [ngModelOptions]="{standalone: true}">
+          <input  ngModel name="TAddress" type="text"  #name="ngModel" >
           <br>
           <br>
           <label>Email Address</label><br>
-          <input  ngModel type="text"  #name="ngModel" name="TemailAddress">
+          <input  ngModel name="TemailAddress" type="text"  #name="ngModel"  >
           <br>
           <br>
           <label>Work Location</label><br>
-          <input  ngModel type="text" #name="ngModel" placeholder="virtual or in-person"  name="Tlocation">
+          <input  ngModel type="text" name="Tlocation" #name="ngModel" placeholder="virtual or in-person"  >
           <br>
           <br>
           <label>Standard</label><br>
-        <input  ngModel name="FName" #name="ngModel" required type="text" >
+        <input  ngModel name="Tstandard" #name="ngModel" required type="text" >
           <br>
           <br>
-          <input type="submit" (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
+          <input type="submit"  (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
 
         </form>
         <br>

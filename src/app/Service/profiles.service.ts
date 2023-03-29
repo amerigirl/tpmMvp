@@ -10,7 +10,7 @@ export class ProfileService{
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { Fname: string, Mname: string, Lname: string, Taddress: string, TemailAddress:string, Tlocation: string, Tstandard:string}){
+  createProfile(newProfile: { Fname: string, Mname: string, Lname: string, TAddress: string, TemailAddress:string, Tlocation: string, Tstandard:string}){
 
     const headers = new HttpHeaders({
       'myHeader': 'profile',
@@ -26,7 +26,6 @@ export class ProfileService{
       .subscribe((res) => {
       console.log(res)  
       
-     
     });
 
   }
@@ -52,13 +51,13 @@ export class ProfileService{
   }
 
   updateProfile(id: string, value: Profile){
-    this.http.put('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles' + id +'.json', value)
+    this.http.put('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json', value)
     .subscribe();
 
   }
 
   deleteProfile(id: string){
-    this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles' + id +'.json')
+    this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json')
     .subscribe();
   }
 }

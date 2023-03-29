@@ -24,7 +24,7 @@ export class CreateProfileComponent implements OnInit{
 
 
   //creates profiles
-  onProfileCreate(newProfile: { Fname: string, Mname: string, Lname: string, Taddress: string, TemailAddress:string, Tlocation: string, id: string, Tstandard: string}) {
+  onProfileCreate(newProfile: { Fname: string, Mname: string, Lname: string, TAddress:string, TemailAddress:string, Tlocation: string, id: string, Tstandard: string}) {
     
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
@@ -50,22 +50,27 @@ export class CreateProfileComponent implements OnInit{
     this.profileService.fetchProfile()
      .subscribe((profiles:any)=>{
       this.allProfiles = profiles;
+      console.log("this.allProfiles on fetchmethod" + this.allProfiles);
     });
   }
 
   onEditClicked(id:string){
+    console.log(id);
+    this.privateonProfilesFetch();
     this.currentProfileId = id;
       //gets the product from the backend via id
+      console.log("this.allProfiles onclickedmethod" + this.allProfiles);
         let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
-        
+        console.log("currentProduct" + currentProduct);
         this.form?.setValue({
-          firstName: currentProduct?.Fname,
-          middleName: currentProduct?.Mname,
-          lastName: currentProduct?.Lname,
-          address: currentProduct?.Taddress,
-          email: currentProduct?.TemailAddress,
-          location: currentProduct?.Tlocation,
-          standard: currentProduct?.Tstandard
+          Fname: currentProduct?.Fname,
+          Mname: currentProduct?.Mname,
+          Lname: currentProduct?.Lname,
+          TAddress: currentProduct?.TAddress,
+          TemailAddress: currentProduct?.TemailAddress,
+          Tlocation: currentProduct?.Tlocation,
+          Tstandard: currentProduct?.Tstandard,
+          id: currentProduct?.id
 
         });
 
