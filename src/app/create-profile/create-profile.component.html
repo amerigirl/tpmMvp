@@ -29,6 +29,7 @@
       <td>{{i + 1 }}</td>
       <td>{{profile.Fname}}</td>
       <td>{{profile.Mname}}</td>
+      <td>{{profile.Lname}}</td>
       <td>{{profile.Taddress}}</td>
       <td>{{profile.TemailAddress}}</td>
       <td>{{profile.Tlocation}}</td>
@@ -48,29 +49,30 @@
   <div class="container">
     <div class="form">
      <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
-      <form #cForm="ngForm" (ngSubmit)="onProfileCreate(cForm.value)">
+     <!--added '[ngModelOptions]="{standalone: true}"' to get rid of ngModel Error in console-->
+      <form #cForm="ngForm"    (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
         <label>First Name</label><br>
-        <input  ngModel name="Fname" #name="ngModel" required type="text" >
+        <input  ngModel name="Fname" #name="ngModel" required type="text" [ngModelOptions]="{standalone: true}">
           <br>
           <br>
           <label>Middle Name</label><br>
-        <input  ngModel name="Mname" #name="ngModel" required type="text" >
+        <input  ngModel name="Mname" #name="ngModel"  type="text" [ngModelOptions]="{standalone: true}">
           <br>
           <br>
           <label>Last Name</label><br>
-          <input  ngModel name="Lname" #name="ngModel" required type="text" >
+          <input  ngModel name="Lname" #name="ngModel" required type="text" [ngModelOptions]="{standalone: true}">
             <br>
             <br>
           <label>Street Address</label><br>
-          <input  ngModel type="text"  Name="FAddress" >
+          <input  ngModel type="text"  #name="ngModel" Name="FAddress" [ngModelOptions]="{standalone: true}">
           <br>
           <br>
           <label>Email Address</label><br>
-          <input  ngModel type="text"  name="TemailAddress" >
+          <input  ngModel type="text"  #name="ngModel" name="TemailAddress">
           <br>
           <br>
           <label>Work Location</label><br>
-          <input  ngModel type="text" placeholder="virtual or in-person"  name="Tlocation">
+          <input  ngModel type="text" #name="ngModel" placeholder="virtual or in-person"  name="Tlocation">
           <br>
           <br>
           <label>Standard</label><br>
