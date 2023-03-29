@@ -14,9 +14,7 @@ export class ProfileService{
 
     const headers = new HttpHeaders({
       'myHeader': 'profile',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'true',
+
     });
 
     //this post request takes 3 params

@@ -51,6 +51,7 @@
      <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
      <!--added '[ngModelOptions]="{standalone: true}"' to get rid of ngModel Error in console-->
       <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
+       
         <label>First Name</label><br>
         <input  ngModel name="Fname" #name="ngModel"  required type="text" >
           <br>
@@ -76,7 +77,11 @@
           <br>
           <br>
           <label>Standard</label><br>
-        <input  ngModel name="Tstandard" #name="ngModel" required type="text" >
+          <input  ngModel name="Tstandard" #name="ngModel" required type="text" >
+          <br>
+          <br>
+          <label>ID</label><br>
+          <input  ngModel name="id" #name="ngModel" required type="text" >
           <br>
           <br>
           <input type="submit"  (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >

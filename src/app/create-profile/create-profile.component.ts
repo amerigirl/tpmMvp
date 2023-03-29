@@ -50,18 +50,15 @@ export class CreateProfileComponent implements OnInit{
     this.profileService.fetchProfile()
      .subscribe((profiles:any)=>{
       this.allProfiles = profiles;
-      console.log("this.allProfiles on fetchmethod" + this.allProfiles);
     });
   }
 
   onEditClicked(id:string){
-    console.log(id);
     this.privateonProfilesFetch();
     this.currentProfileId = id;
       //gets the product from the backend via id
-      console.log("this.allProfiles onclickedmethod" + this.allProfiles);
+     
         let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
-        console.log("currentProduct" + currentProduct);
         this.form?.setValue({
           Fname: currentProduct?.Fname,
           Mname: currentProduct?.Mname,
@@ -71,7 +68,6 @@ export class CreateProfileComponent implements OnInit{
           Tlocation: currentProduct?.Tlocation,
           Tstandard: currentProduct?.Tstandard,
           id: currentProduct?.id
-
         });
 
         this.editmode = true;
