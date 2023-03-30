@@ -27,13 +27,13 @@
   <br>
      <tr *ngFor="let profile of allProfiles; index as i" >
       <td>{{i + 1 }}</td>
-      <td>{{profile.Fname}}</td>
-      <td>{{profile.Mname}}</td>
-      <td>{{profile.Lname}}</td>
-      <td>{{profile.TAddress}}</td>
-      <td>{{profile.TemailAddress}}</td>
-      <td>{{profile.Tlocation}}</td>
-      <td>{{profile.Tstandard}}</td>
+      <td>{{profile.fname}}</td>
+      <td>{{profile.mname}}</td>
+      <td>{{profile.lname}}</td>
+      <td>{{profile.tAddress}}</td>
+      <td>{{profile.temailAddress}}</td>
+      <td>{{profile.tlocation}}</td>
+      <td>{{profile.tstandard}}</td>
 
 
       <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
@@ -53,31 +53,31 @@
       <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
        
         <label>First Name</label><br>
-        <input  ngModel name="Fname" #name="ngModel"  required type="text" >
+        <input  ngModel name="fname" #name="ngModel"  required type="text" >
           <br>
           <br>
           <label>Middle Name</label><br>
-        <input  ngModel name="Mname" #name="ngModel"  type="text" >
+        <input  ngModel name="mname" #name="ngModel"  type="text" >
           <br>
           <br>
           <label>Last Name</label><br>
-          <input  ngModel name="Lname" #name="ngModel" required type="text">
+          <input  ngModel name="lname" #name="ngModel" required type="text">
             <br>
             <br>
           <label>Street Address</label><br>
-          <input  ngModel name="TAddress" type="text"  #name="ngModel" >
+          <input  ngModel name="tAddress" type="text"  #name="ngModel" >
           <br>
           <br>
           <label>Email Address</label><br>
-          <input  ngModel name="TemailAddress" type="text"  #name="ngModel"  >
+          <input  ngModel name="temailAddress" type="text"  #name="ngModel"  >
           <br>
           <br>
           <label>Work Location</label><br>
-          <input  ngModel type="text" name="Tlocation" #name="ngModel" placeholder="virtual or in-person"  >
+          <input  ngModel type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person"  >
           <br>
           <br>
           <label>Standard</label><br>
-          <input  ngModel name="Tstandard" #name="ngModel" required type="text" >
+          <input  ngModel name="tstandard" #name="ngModel" required type="text" >
           <br>
           <br>
           <label>ID</label><br>

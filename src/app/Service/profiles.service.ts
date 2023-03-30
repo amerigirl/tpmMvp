@@ -10,16 +10,19 @@ export class ProfileService{
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { Fname: string, Mname: string, Lname: string, TAddress: string, TemailAddress:string, Tlocation: string, Tstandard:string}){
+  createProfile(newProfile: { fname: string, mname: string, lname: string, tAddress: string, temailAddress:string, tlocation: string, tstandard:string}){
 
     const headers = new HttpHeaders({
-      'myHeader': 'profile',
+      'Access-Control-Allow-Origin': '*', 
+      'Content-Type': 'application/json',
+      'Accept':'text/plain',
+      'Access-Control-Allow-Methods': 'POST, GET'
 
     });
 
     //this post request takes 3 params
     this.http.post<{name: string}>(
-     'https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json',
+     'https://localhost:7142/api/Teachers/',
       newProfile, {headers: headers})
       .subscribe((res) => {
       console.log(res)  
@@ -32,7 +35,7 @@ export class ProfileService{
   //<{[key: string]: Profile}> sets the structure for the observablet that returns
 
   fetchProfile(){
-    return this.http.get<{[key: string]: Profile}>('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles.json')
+    return this.http.get<{[key: string]: Profile}>('https://localhost:7142/api/Teachers/')
     .pipe(map((res: any)=>{
 
     const profiles = [];
@@ -55,7 +58,7 @@ export class ProfileService{
   }
 
   deleteProfile(id: string){
-    this.http.delete('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json')
+    this.http.delete('https://localhost:7142/api/Teachers/' + id +'.json')
     .subscribe();
   }
 }

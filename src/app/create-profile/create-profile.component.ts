@@ -14,17 +14,24 @@ import { NgForm } from '@angular/forms';
 
 export class CreateProfileComponent implements OnInit{
 
+  //new vars
   allProfiles: Profile[] = [];
   @ViewChild('cForm') form:  NgForm | undefined;
   editmode: boolean = false;
   currentProfileId!: string;
-  headers = new HttpHeaders({'myHeader': 'profile'});
 
+  headers = new HttpHeaders({
+    'myHeader': 'profile',
+    'Access-Control-Allow-Origin': '*', 
+    'Content-Type': 'application/json'
+  });
+
+
+  //injects HTTP services
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
-
-  //creates profiles
-  onProfileCreate(newProfile: { Fname: string, Mname: string, Lname: string, TAddress:string, TemailAddress:string, Tlocation: string, id: string, Tstandard: string}) {
+  //creates profiles with alert
+  onProfileCreate(newProfile: { fname: string, mname: string, lname: string, tAddress:string, temailAddress:string, tlocation: string, id: string, tstandard: string}) {
     
     if(!this.editmode){
       this.profileService.createProfile(newProfile);
@@ -37,6 +44,7 @@ export class CreateProfileComponent implements OnInit{
     alert("Form Submitted!")
    
   }
+
 
   //fetching profiles
   //assigns the profiles we get from the service to the allProfiles array
@@ -53,20 +61,21 @@ export class CreateProfileComponent implements OnInit{
     });
   }
 
+
+  //updates profile
   onEditClicked(id:string){
     this.privateonProfilesFetch();
     this.currentProfileId = id;
-      //gets the product from the backend via id
      
         let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
         this.form?.setValue({
-          Fname: currentProduct?.Fname,
-          Mname: currentProduct?.Mname,
-          Lname: currentProduct?.Lname,
-          TAddress: currentProduct?.TAddress,
-          TemailAddress: currentProduct?.TemailAddress,
-          Tlocation: currentProduct?.Tlocation,
-          Tstandard: currentProduct?.Tstandard,
+          Fname: currentProduct?.fname,
+          Mname: currentProduct?.mname,
+          Lname: currentProduct?.lname,
+          TAddress: currentProduct?.tAddress,
+          TemailAddress: currentProduct?.temailAddress,
+          Tlocation: currentProduct?.tlocation,
+          Tstandard: currentProduct?.tstandard,
           id: currentProduct?.id
         });
 
