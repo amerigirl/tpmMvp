@@ -23,27 +23,47 @@ export class CreateProfileComponent implements OnInit{
   headers = new HttpHeaders({
     'myHeader': 'profile',
     'Access-Control-Allow-Origin': '*', 
-    'Content-Type': 'application/json'
-  });
+    'ntent-Type': 'application/json'
+  })
+  
 
 
   //injects HTTP services
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
   //creates profiles with alert
-  onProfileCreate(newProfile: { fname: string, mname: string, lname: string, tAddress:string, temailAddress:string, tlocation: string, id: string, tstandard: string}) {
-    
-    if(!this.editmode){
-      this.profileService.createProfile(newProfile);
-    } else{
-      this.profileService.updateProfile(this.currentProfileId, newProfile );
-    }
-  }
+  onProfileCreate(newProfile: { 
+    fname: string, 
+    mname: string, 
+    lname: string, 
+    tAddress:string, 
+    temailAddress:string, 
+    tlocation: string, 
+    id: string, 
+    tstandard: string
 
-  verificationAlert(form:string){
-    alert("Form Submitted!")
+  }) 
+  {  
+    console.log(newProfile)
+
+    this.http.post('https://localhost:7142/api/Teachers', newProfile)
+    .subscribe((res)=>{
+      console.log(res)
+    });
+ }
+
+
+  //  if(!this.editmode){
+  //     this.profileService.createProfile(newProfile);
+  //   } else{
+  //     this.profileService.updateProfile(this.currentProfileId, newProfile );
+  //   } 
+
+ 
+  // verificationAlert(form:string){
+  //   alert("Form Submitted!")
    
-  }
+  // }
 
 
   //fetching profiles
@@ -86,8 +106,8 @@ export class CreateProfileComponent implements OnInit{
   //deletes profiles
   onDeleteProfile(id: string){
     this.profileService.deleteProfile(id);
-    alert("Profile deleted!");
-    location.reload();
+    // alert("Profile deleted!");
+    // location.reload();
   }
 
 }

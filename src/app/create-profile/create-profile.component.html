@@ -53,38 +53,38 @@
       <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
        
         <label>First Name</label><br>
-        <input  ngModel name="fname" #name="ngModel"  required type="text" >
+        <input  type="text"  name="fname" #name="ngModel"  ngModel  >
           <br>
           <br>
           <label>Middle Name</label><br>
-        <input  ngModel name="mname" #name="ngModel"  type="text" >
+        <input   type="text" name="mname" #name="ngModel" ngModel  >
           <br>
           <br>
           <label>Last Name</label><br>
-          <input  ngModel name="lname" #name="ngModel" required type="text">
+          <input  type="text" name="lname" #name="ngModel" ngModel   >
             <br>
             <br>
           <label>Street Address</label><br>
-          <input  ngModel name="tAddress" type="text"  #name="ngModel" >
+          <input   name="tAddress" type="text"  #name="ngModel" ngModel >
           <br>
           <br>
           <label>Email Address</label><br>
-          <input  ngModel name="temailAddress" type="text"  #name="ngModel"  >
+          <input  type="text" name="temailAddress"   #name="ngModel" ngModel  >
           <br>
           <br>
           <label>Work Location</label><br>
-          <input  ngModel type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person"  >
+          <input   type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person" ngModel >
           <br>
           <br>
           <label>Standard</label><br>
-          <input  ngModel name="tstandard" #name="ngModel" required type="text" >
+          <input type="text"  name="tstandard" #name="ngModel" ngModel  >
           <br>
           <br>
           <label>ID</label><br>
-          <input  ngModel name="id" #name="ngModel" required type="text" >
+          <input   name="id" #name="ngModel"  type="text" ngModel>
           <br>
           <br>
-          <input type="submit"  (click)="verificationAlert(cForm.value)" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
+          <input type="submit" value="Add Profile"  >
 
         </form>
         <br>
@@ -95,3 +95,4 @@
 
 
 
+<!--method from form at top(click)="verificationAlert(cForm.value)"  this method is from button at bottom   "{{ editmode ? 'Update Profile' : 'Create Profile'}}"-->
