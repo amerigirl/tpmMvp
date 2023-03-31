@@ -29,27 +29,21 @@ export class CreateProfileComponent implements OnInit{
     fname: string, 
     mname: string, 
     lname: string, 
-    tAddress:string, 
+    taddress:string, 
     temailAddress:string, 
     tlocation: string, 
     id: string, 
     tstandard: string
-
-  }) 
-  {  
+  }) {  
    
-    this.profileService.createProfile(newProfile);
-    console.log(newProfile)
+       if(!this.editmode){
+      this.profileService.createProfile(newProfile);
+    } else{
+      this.profileService.updateProfile(this.currentProfileId, newProfile );
+    } 
+ 
  }
 
-
-  //  if(!this.editmode){
-  //     this.profileService.createProfile(newProfile);
-  //   } else{
-  //     this.profileService.updateProfile(this.currentProfileId, newProfile );
-  //   } 
-
- 
   // verificationAlert(form:string){
   //   alert("Form Submitted!")
    
@@ -64,7 +58,6 @@ export class CreateProfileComponent implements OnInit{
   }
 
   privateonProfilesFetch(){
-
     this.profileService.fetchProfile()
      .subscribe((profiles:any)=>{
       this.allProfiles = profiles;
@@ -72,25 +65,23 @@ export class CreateProfileComponent implements OnInit{
   }
 
 
-  //updates profile
+  //updates profile only works if you omit set id param!!
   onEditClicked(id:string){
     this.privateonProfilesFetch();
     this.currentProfileId = id;
      
-        let currentProduct = this.allProfiles.find((p)=>{return p.Id == id})
-        this.form?.setValue({
-          Fname: currentProduct?.fname,
-          Mname: currentProduct?.mname,
-          Lname: currentProduct?.lname,
-          TAddress: currentProduct?.tAddress,
-          TemailAddress: currentProduct?.temailAddress,
-          Tlocation: currentProduct?.tlocation,
-          Tstandard: currentProduct?.tstandard,
-          id: currentProduct?.Id
-        });
-
-        this.editmode = true;
-
+      let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
+      this.form?.setValue({
+        fname: currentProduct?.fname,
+        mname: currentProduct?.mname,
+        lname: currentProduct?.lname,
+        taddress: currentProduct?.taddress,
+        temailAddress: currentProduct?.temailAddress,
+        tlocation: currentProduct?.tlocation,
+        tstandard: currentProduct?.tstandard,
+       
+      });
+    this.editmode = true;
   }
 
   //deletes profiles

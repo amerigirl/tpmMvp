@@ -8,17 +8,21 @@ import { Profile } from "../model/profile";
 export class ProfileService{
 url = 'https://localhost:7142/api/Teachers';
 
+    headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-control-allow-headers': '*', 
+      'Access-control-allow-methods': '* '
+    });
+    
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  createProfile(newProfile: { fname: string, mname: string, lname: string, tAddress: string, temailAddress:string, tlocation: string, tstandard:string}){
+  createProfile(newProfile: { id: string, fname: string, mname: string, lname: string, taddress: string, temailAddress:string, tlocation: string, tstandard:string}){
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
+ 
 
     //this post request takes 3 params
-    this.http.post<any>(this.url, newProfile, {headers: headers})
+    this.http.post<any>(this.url, newProfile, {headers: this.headers})
       .subscribe((res) => {
       console.log(res)  
       
@@ -38,7 +42,7 @@ url = 'https://localhost:7142/api/Teachers';
       //loops through keys in the response, returns matches from the server
       for(const key in res) {
         if(res.hasOwnProperty(key)) //this is how you check if a property is in an object
-        profiles.push({...res[key], id: key});
+        profiles.push({...res[key]});
       }
 
     return profiles;
@@ -46,14 +50,14 @@ url = 'https://localhost:7142/api/Teachers';
 
   }
 
-  updateProfile(id: string, value: Profile){
-    this.http.put('https://mvptpm-61807-default-rtdb.firebaseio.com/profiles/' + id +'.json', value)
+  updateProfile(Id: string, value: Profile){
+    this.http.put(`https://localhost:7142/api/Teachers/${Id}`, value, {headers:this.headers})
     .subscribe();
 
   }
 
-  deleteProfile(id: string){
-    this.http.delete('https://localhost:7142/api/Teachers/')
+  deleteProfile(Id: string){
+    this.http.delete(`https://localhost:7142/api/Teachers/${Id}`, {headers: this.headers})
     .subscribe();
   }
 }

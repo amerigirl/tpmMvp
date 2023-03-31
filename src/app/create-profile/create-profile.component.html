@@ -30,14 +30,14 @@
       <td>{{profile.fname}}</td>
       <td>{{profile.mname}}</td>
       <td>{{profile.lname}}</td>
-      <td>{{profile.tAddress}}</td>
+      <td>{{profile.taddress}}</td>
       <td>{{profile.temailAddress}}</td>
       <td>{{profile.tlocation}}</td>
       <td>{{profile.tstandard}}</td>
 
 
-      <td><button (click)="onEditClicked(profile.Id)">Edit</button></td>
-      <td><button (click)="onDeleteProfile(profile.Id)">Delete</button></td>
+      <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
+      <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
      </tr>
    </table>
   </div>
@@ -65,7 +65,7 @@
             <br>
             <br>
           <label>Street Address</label><br>
-          <input   name="tAddress" type="text"  #name="ngModel" ngModel >
+          <input   name="taddress" type="text"  #name="ngModel" ngModel >
           <br>
           <br>
           <label>Email Address</label><br>
@@ -80,7 +80,7 @@
           <input type="text"  name="tstandard" #name="ngModel" ngModel  >
           <br>
           <br>
-          <input type="submit" value="Add Profile"  >
+          <input type="submit" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
 
         </form>
         <br>
