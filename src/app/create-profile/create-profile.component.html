@@ -36,8 +36,8 @@
       <td>{{profile.tstandard}}</td>
 
 
-      <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
-      <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
+      <td><button (click)="onEditClicked(profile.Id)">Edit</button></td>
+      <td><button (click)="onDeleteProfile(profile.Id)">Delete</button></td>
      </tr>
    </table>
   </div>
@@ -78,10 +78,6 @@
           <br>
           <label>Standard</label><br>
           <input type="text"  name="tstandard" #name="ngModel" ngModel  >
-          <br>
-          <br>
-          <label>ID</label><br>
-          <input   name="id" #name="ngModel"  type="text" ngModel>
           <br>
           <br>
           <input type="submit" value="Add Profile"  >

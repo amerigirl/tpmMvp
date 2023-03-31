@@ -3,7 +3,7 @@ import { NgZone } from "@angular/core";
 export class Profile {
 
 constructor(
-  public id: string, 
+  public Id: string, 
   public fname: string, 
   public mname: string, 
   public lname: string, 
@@ -13,7 +13,7 @@ constructor(
   public tstandard: string) 
   
   {
-    this.id = id;
+    this.Id = Id;
     this.fname = fname;
     this.mname = mname;
     this.lname = lname;

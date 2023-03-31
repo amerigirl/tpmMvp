@@ -20,15 +20,8 @@ export class CreateProfileComponent implements OnInit{
   editmode: boolean = false;
   currentProfileId!: string;
 
-  headers = new HttpHeaders({
-    'myHeader': 'profile',
-    'Access-Control-Allow-Origin': '*', 
-    'ntent-Type': 'application/json'
-  })
+
   
-
-
-  //injects HTTP services
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
   //creates profiles with alert
@@ -44,12 +37,9 @@ export class CreateProfileComponent implements OnInit{
 
   }) 
   {  
+   
+    this.profileService.createProfile(newProfile);
     console.log(newProfile)
-
-    this.http.post('https://localhost:7142/api/Teachers', newProfile)
-    .subscribe((res)=>{
-      console.log(res)
-    });
  }
 
 
@@ -87,7 +77,7 @@ export class CreateProfileComponent implements OnInit{
     this.privateonProfilesFetch();
     this.currentProfileId = id;
      
-        let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
+        let currentProduct = this.allProfiles.find((p)=>{return p.Id == id})
         this.form?.setValue({
           Fname: currentProduct?.fname,
           Mname: currentProduct?.mname,
@@ -96,7 +86,7 @@ export class CreateProfileComponent implements OnInit{
           TemailAddress: currentProduct?.temailAddress,
           Tlocation: currentProduct?.tlocation,
           Tstandard: currentProduct?.tstandard,
-          id: currentProduct?.id
+          id: currentProduct?.Id
         });
 
         this.editmode = true;

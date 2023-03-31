@@ -11,23 +11,20 @@ url = 'https://localhost:7142/api/Teachers';
   constructor(private http: HttpClient){}
 
   //create profile in the database
-  // createProfile(newProfile: { fname: string, mname: string, lname: string, tAddress: string, temailAddress:string, tlocation: string, tstandard:string}){
+  createProfile(newProfile: { fname: string, mname: string, lname: string, tAddress: string, temailAddress:string, tlocation: string, tstandard:string}){
 
-  //   const headers = new HttpHeaders({
-  //     'Access-Control-Allow-Origin': '*', 
-  //     'Content-Type': 'application/json',
-  //     'Accept':'*/*',
-  //     'Access-Control-Allow-Methods': 'POST, GET',
-  //   });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
 
-  //   //this post request takes 3 params
-  //   this.http.post<any>(this.url, newProfile, {headers: headers})
-  //     .subscribe((res) => {
-  //     console.log(res)  
+    //this post request takes 3 params
+    this.http.post<any>(this.url, newProfile, {headers: headers})
+      .subscribe((res) => {
+      console.log(res)  
       
-  //   });
+    });
 
-  // }
+  }
 
   //fetch profile from the database
   //<{[key: string]: Profile}> sets the structure for the observablet that returns
