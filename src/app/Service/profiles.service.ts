@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs";
 import { Profile } from "../model/profile";
+import { UpdateModel } from "../model/updateModel";
 
 
 @Injectable({providedIn: "root"})
@@ -16,14 +17,12 @@ url = 'https://localhost:7142/api/Teachers';
     
   constructor(private http: HttpClient){}
 
-  //create profile in the database
-  createProfile(newProfile: { id: string, fname: string, mname: string, lname: string, taddress: string, temailAddress:string, tlocation: string, tstandard:string}){
-
- 
-
+  //create profile in the database-
+  createProfile(newProfile: { id:string, fname: string, mname: string, lname: string, taddress: string, temailAddress:string, tlocation: string, tstandard:string}){
     //this post request takes 3 params
     this.http.post<any>(this.url, newProfile, {headers: this.headers})
       .subscribe((res) => {
+        
       console.log(res)  
       
     });
@@ -44,20 +43,25 @@ url = 'https://localhost:7142/api/Teachers';
         if(res.hasOwnProperty(key)) //this is how you check if a property is in an object
         profiles.push({...res[key]});
       }
-
+//can I add a conditional that says when you fetch, don't fetch id?
     return profiles;
     }));
 
   }
 
-  updateProfile(Id: string, value: Profile){
-    this.http.put(`https://localhost:7142/api/Teachers/${Id}`, value, {headers:this.headers})
+  //we are updating the current product
+  updateProfile(id: string, currentProduct: Profile){
+    this.http.put(`https://localhost:7142/api/Teachers/${id}`, currentProduct)
     .subscribe();
 
   }
 
   deleteProfile(Id: string){
+  
     this.http.delete(`https://localhost:7142/api/Teachers/${Id}`, {headers: this.headers})
     .subscribe();
   }
 }
+
+
+//value: Profile  , value

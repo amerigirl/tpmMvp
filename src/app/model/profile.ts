@@ -10,10 +10,10 @@ constructor(
   public taddress: string, 
   public temailAddress:string, 
   public tlocation: string, 
-  public tstandard: string) 
+  public tstandard: string
   
-  {
-    this.id = id;
+  ) {
+    this.id  = id;
     this.fname = fname;
     this.mname = mname;
     this.lname = lname;

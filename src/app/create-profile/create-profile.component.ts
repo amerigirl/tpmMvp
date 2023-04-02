@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../model/profile';
 import { ProfileService } from '../Service/profiles.service';
 import { NgForm } from '@angular/forms';
+import { TitleStrategy } from '@angular/router';
+import { UpdateModel } from '../model/updateModel';
+import { style } from '@angular/animations';
+import { elementAt } from 'rxjs';
 
 
 @Component({
@@ -18,14 +22,15 @@ export class CreateProfileComponent implements OnInit{
   allProfiles: Profile[] = [];
   @ViewChild('cForm') form:  NgForm | undefined;
   editmode: boolean = false;
+  noIdInputBox: boolean = false;
   currentProfileId!: string;
-
-
+  updateModel!: UpdateModel;
   
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
   //creates profiles with alert
   onProfileCreate(newProfile: { 
+    
     fname: string, 
     mname: string, 
     lname: string, 
@@ -34,25 +39,29 @@ export class CreateProfileComponent implements OnInit{
     tlocation: string, 
     id: string, 
     tstandard: string
+
+    
   }) {  
    
        if(!this.editmode){
+        this.noIdInputBox = false;
       this.profileService.createProfile(newProfile);
-    } else{
-      this.profileService.updateProfile(this.currentProfileId, newProfile );
+    } else {
+      this.noIdInputBox = false;
+      this.profileService.updateProfile(this.currentProfileId, newProfile ); //but I think this wrong, shouldn't it be currentProduct?
+      console.log("this is running")
     } 
  
  }
 
+ //this can be updated to reflect what to do if edit mode is on (set to update complete)
   // verificationAlert(form:string){
   //   alert("Form Submitted!")
    
   // }
 
 
-  //fetching profiles
   //assigns the profiles we get from the service to the allProfiles array
-
   ngOnInit(){
     this.privateonProfilesFetch();
   }
@@ -79,16 +88,21 @@ export class CreateProfileComponent implements OnInit{
         temailAddress: currentProduct?.temailAddress,
         tlocation: currentProduct?.tlocation,
         tstandard: currentProduct?.tstandard,
-       
+        id: currentProduct?.id
       });
     this.editmode = true;
+    
+  }
+//maybe you need a new method attached specifically to the update button/if editmode?
+
+
+//deletes profiles
+  onDeleteProfile(id: string){
+
+    this.profileService.deleteProfile(id);
+    alert("Profile deleted!");
+    location.reload();
   }
 
-  //deletes profiles
-  onDeleteProfile(id: string){
-    this.profileService.deleteProfile(id);
-    // alert("Profile deleted!");
-    // location.reload();
-  }
 
 }

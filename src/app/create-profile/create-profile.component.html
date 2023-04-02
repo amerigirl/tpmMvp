@@ -1,3 +1,15 @@
+<!-- <script>
+function toggleIdInput(){
+ if(document.getElementsByName('id').createProfileNoId == true) {
+    document.getElementsByName('id').style.display='none';
+ } else{
+  document.getElementsByName('id').style.display='block';
+
+ }
+}
+
+</script> -->
+
 <body>
   <div>
     <h1 class="title">Let's Create a New Profile!</h1>
@@ -77,18 +89,22 @@
           <br>
           <br>
           <label>Standard</label><br>
-          <input type="text"  name="tstandard" #name="ngModel" ngModel  >
+          <input type="text"  name="tstandard"  #name="ngModel" ngModel="all" >
           <br>
           <br>
-          <input type="submit" value="{{ editmode ? 'Update Profile' : 'Create Profile'}}" >
-
-        </form>
-        <br>
-        <br>
+          <div class="div" *ngIf="noIdInputBox">
+            <label>Id</label><br>
+             <input [disabled]="noIdInputBox" name="id" #name="ngModel" ngModel >
+        </div>
+        <div class="div" *ngIf="!noIdInputBox">
+          <input type="" name="id" #name="ngModel" ngModel >
+        </div>
+         <input type="submit"  value="{{ editmode ? 'Update Profile' : 'Create Profile'}}">
+      </form>
+       
     </div>
   </div>
 </body>
 
 
-
-<!--method from form at top(click)="verificationAlert(cForm.value)"  this method is from button at bottom   "{{ editmode ? 'Update Profile' : 'Create Profile'}}"-->
+<!--(click)="verificationAlert(cForm.value)"-->
