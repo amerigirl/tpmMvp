@@ -93,13 +93,20 @@ function toggleIdInput(){
           <br>
           <br>
 
-          <div id="noBox" > <!--set to true for create profile-->
-            <input  disabled="true" name="id" #name="ngModel" ngModel>
-          </div><br> 
+          <div style="position: absolute; left: -9999px">
+            <input name="id" type="text"  #name="ngModel" ngModel ><br><br>
+          </div>
+            
+          <!--if editmode is false(creating a new profile), then set disabled to true
+            if editmode is true, then set disabled to false
+              -->
 
-        
-         <input type="submit"  id="submitValue" value="{{ editmode ?  'Update Profile'  : 'Create Profile'}}">
-         <!--when I'm updating data, I need the disabled set to false-->
+              
+         <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" >
+              <!--
+                1. a click event to switch the disabled to false in css?
+                2. create a separate div and turn off and on with click event 
+              -->
         </form>
        
     </div>
@@ -107,7 +114,3 @@ function toggleIdInput(){
 </body>
 
 
-<!--(click)="verificationAlert(cForm.value)"-->
-<!-- <div id="yesBox" *ngIf="!noIdBox">  shows the id field-->
-          <!-- <input disabled="false" name="id" #name="ngModel" ngModel>  <br><br>
-        </div> --> 

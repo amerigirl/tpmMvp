@@ -37,25 +37,29 @@ export class CreateProfileComponent implements OnInit{
     taddress:string, 
     temailAddress:string, 
     tlocation: string, 
-    id: string, 
+     id: string, 
     tstandard: string
-
     
   }) {  
    
        if(!this.editmode){
-        this.noIdBox = true;
-        this.profileService.createProfile(newProfile);
+        let tempProfile = { fname: newProfile.fname, mname:newProfile.mname, lname: newProfile.lname,  taddress: newProfile.taddress, temailAddress:newProfile.temailAddress, tlocation: newProfile.tlocation, tstandard:newProfile.tstandard}
+  
+        this.profileService.createProfile(tempProfile);
+
         
       } 
-    
       else if(this.editmode) {
-       this.noIdBox = false;
+       console.log("edit mode should be true")
       this.profileService.updateProfile(this.currentProfileId, newProfile ); //but I think this wrong, shouldn't it be currentProduct?
-      console.log("this is running")
+      
+ 
     } 
  
  }
+
+
+
 
  //this can be updated to reflect what to do if edit mode is on (set to update complete)
   // verificationAlert(form:string){

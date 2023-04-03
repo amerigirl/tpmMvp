@@ -18,11 +18,14 @@ url = 'https://localhost:7142/api/Teachers';
   constructor(private http: HttpClient){}
 
   //create profile in the database-
-  createProfile(newProfile: { id:string, fname: string, mname: string, lname: string, taddress: string, temailAddress:string, tlocation: string, tstandard:string}){
+  createProfile(newProfile:any){
     //this post request takes 3 params
+
+
+
     this.http.post<any>(this.url, newProfile, {headers: this.headers})
       .subscribe((res) => {
-        
+
       console.log(res)  
       
     });
