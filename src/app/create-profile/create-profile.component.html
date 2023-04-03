@@ -1,15 +1,3 @@
-<!-- <script>
-function toggleIdInput(){
- if(document.getElementsByName('id').createProfileNoId == true) {
-    document.getElementsByName('id').style.display='none';
- } else{
-  document.getElementsByName('id').style.display='block';
-
- }
-}
-
-</script> -->
-
 <body>
   <div>
     <h1 class="title">Let's Create a New Profile!</h1>
@@ -52,6 +40,7 @@ function toggleIdInput(){
       <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
      </tr>
    </table>
+   
   </div>
   <br>
   <br>
@@ -60,54 +49,50 @@ function toggleIdInput(){
 
   <div class="container">
     <div class="form">
-     <!--you have to create a local reference variable for ngForm, then it's used as an object in the method-->
-     <!--added '[ngModelOptions]="{standalone: true}"' to get rid of ngModel Error in console-->
+
       <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
        
         <label>First Name</label><br>
         <input  type="text"  name="fname" #name="ngModel"  ngModel  >
-          <br>
-          <br>
-          <label>Middle Name</label><br>
+        <br>
+        <br>
+
+        <label>Middle Name</label><br>
         <input   type="text" name="mname" #name="ngModel" ngModel  >
-          <br>
-          <br>
-          <label>Last Name</label><br>
-          <input  type="text" name="lname" #name="ngModel" ngModel   >
-            <br>
-            <br>
-          <label>Street Address</label><br>
-          <input   name="taddress" type="text"  #name="ngModel" ngModel >
-          <br>
-          <br>
-          <label>Email Address</label><br>
-          <input  type="text" name="temailAddress"   #name="ngModel" ngModel  >
-          <br>
-          <br>
-          <label>Work Location</label><br>
-          <input   type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person" ngModel >
-          <br>
-          <br>
-          <label>Standard</label><br>
-          <input type="text"  name="tstandard"  #name="ngModel" ngModel >
-          <br>
-          <br>
+        <br>
+        <br>
 
-          <div style="position: absolute; left: -9999px">
-            <input name="id" type="text"  #name="ngModel" ngModel ><br><br>
-          </div>
+        <label>Last Name</label><br>
+        <input  type="text" name="lname" #name="ngModel" ngModel   >
+        <br>
+        <br>
+        
+        <label>Street Address</label><br>
+        <input   name="taddress" type="text"  #name="ngModel" ngModel >
+        <br>
+        <br>
+        
+        <label>Email Address</label><br>
+        <input  type="text" name="temailAddress"   #name="ngModel" ngModel  >
+        <br>
+        <br>
+        
+        <label>Work Location</label><br>
+        <input   type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person" ngModel >
+        <br>
+        <br>
+        
+        <label>Standard</label><br>
+        <input type="text"  name="tstandard"  #name="ngModel" ngModel >
+        <br>
+        <br>
+
+        <label>Id</label><br>
+        <input name="id" type="text"  #name="ngModel" ngModel ><br><br>
+       
+        <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" >
             
-          <!--if editmode is false(creating a new profile), then set disabled to true
-            if editmode is true, then set disabled to false
-              -->
-
-              
-         <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" >
-              <!--
-                1. a click event to switch the disabled to false in css?
-                2. create a separate div and turn off and on with click event 
-              -->
-        </form>
+      </form>
        
     </div>
   </div>

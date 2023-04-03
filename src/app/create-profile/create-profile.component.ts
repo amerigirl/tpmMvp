@@ -4,7 +4,6 @@ import { Profile } from '../model/profile';
 import { ProfileService } from '../Service/profiles.service';
 import { NgForm } from '@angular/forms';
 import { TitleStrategy } from '@angular/router';
-import { UpdateModel } from '../model/updateModel';
 import { style } from '@angular/animations';
 import { elementAt } from 'rxjs';
 
@@ -24,7 +23,7 @@ export class CreateProfileComponent implements OnInit{
   editmode: boolean = false;
   noIdBox: boolean = false;
   currentProfileId!: string;
-  updateModel!: UpdateModel;
+
   
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
@@ -37,35 +36,25 @@ export class CreateProfileComponent implements OnInit{
     taddress:string, 
     temailAddress:string, 
     tlocation: string, 
-     id: string, 
+    id: string, 
     tstandard: string
     
-  }) {  
+    }) {  
    
-       if(!this.editmode){
-        let tempProfile = { fname: newProfile.fname, mname:newProfile.mname, lname: newProfile.lname,  taddress: newProfile.taddress, temailAddress:newProfile.temailAddress, tlocation: newProfile.tlocation, tstandard:newProfile.tstandard}
-  
-        this.profileService.createProfile(tempProfile);
+          if(!this.editmode){
+            let tempProfile = { fname: newProfile.fname, mname:newProfile.mname, lname: newProfile.lname,  taddress: newProfile.taddress, temailAddress:newProfile.temailAddress, tlocation: newProfile.tlocation, tstandard:newProfile.tstandard}
+            this.profileService.createProfile(tempProfile);
+            alert("Your form was submitted!") 
+            location.reload();
 
-        
-      } 
-      else if(this.editmode) {
-       console.log("edit mode should be true")
-      this.profileService.updateProfile(this.currentProfileId, newProfile ); //but I think this wrong, shouldn't it be currentProduct?
-      
+          } else if(this.editmode) {
+            console.log("edit mode should be true")
+            this.profileService.updateProfile(this.currentProfileId, newProfile ); 
+           alert("Update Complete!")
+           location.reload();
+          } 
  
-    } 
- 
- }
-
-
-
-
- //this can be updated to reflect what to do if edit mode is on (set to update complete)
-  // verificationAlert(form:string){
-  //   alert("Form Submitted!")
-   
-  // }
+  }
 
 
   //assigns the profiles we get from the service to the allProfiles array
@@ -81,7 +70,6 @@ export class CreateProfileComponent implements OnInit{
   }
 
 
-  //updates profile only works if you omit set id param!!
   onEditClicked(id:string){
     this.privateonProfilesFetch();
     this.currentProfileId = id;
@@ -100,8 +88,6 @@ export class CreateProfileComponent implements OnInit{
     this.editmode = true;
     
   }
-//maybe you need a new method attached specifically to the update button/if editmode?
-
 
 //deletes profiles
   onDeleteProfile(id: string){
@@ -110,6 +96,4 @@ export class CreateProfileComponent implements OnInit{
     alert("Profile deleted!");
     location.reload();
   }
-
-
 }
