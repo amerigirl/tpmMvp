@@ -89,18 +89,18 @@ function toggleIdInput(){
           <br>
           <br>
           <label>Standard</label><br>
-          <input type="text"  name="tstandard"  #name="ngModel" ngModel="all" >
+          <input type="text"  name="tstandard"  #name="ngModel" ngModel >
           <br>
           <br>
-          <div class="div" *ngIf="noIdInputBox">
-            <label>Id</label><br>
-             <input [disabled]="noIdInputBox" name="id" #name="ngModel" ngModel >
-        </div>
-        <div class="div" *ngIf="!noIdInputBox">
-          <input type="" name="id" #name="ngModel" ngModel >
-        </div>
-         <input type="submit"  value="{{ editmode ? 'Update Profile' : 'Create Profile'}}">
-      </form>
+
+          <div id="noBox" > <!--set to true for create profile-->
+            <input  disabled="true" name="id" #name="ngModel" ngModel>
+          </div><br> 
+
+        
+         <input type="submit"  id="submitValue" value="{{ editmode ?  'Update Profile'  : 'Create Profile'}}">
+         <!--when I'm updating data, I need the disabled set to false-->
+        </form>
        
     </div>
   </div>
@@ -108,3 +108,6 @@ function toggleIdInput(){
 
 
 <!--(click)="verificationAlert(cForm.value)"-->
+<!-- <div id="yesBox" *ngIf="!noIdBox">  shows the id field-->
+          <!-- <input disabled="false" name="id" #name="ngModel" ngModel>  <br><br>
+        </div> --> 

@@ -22,7 +22,7 @@ export class CreateProfileComponent implements OnInit{
   allProfiles: Profile[] = [];
   @ViewChild('cForm') form:  NgForm | undefined;
   editmode: boolean = false;
-  noIdInputBox: boolean = false;
+  noIdBox: boolean = false;
   currentProfileId!: string;
   updateModel!: UpdateModel;
   
@@ -44,10 +44,13 @@ export class CreateProfileComponent implements OnInit{
   }) {  
    
        if(!this.editmode){
-        this.noIdInputBox = false;
-      this.profileService.createProfile(newProfile);
-    } else {
-      this.noIdInputBox = false;
+        this.noIdBox = true;
+        this.profileService.createProfile(newProfile);
+        
+      } 
+    
+      else if(this.editmode) {
+       this.noIdBox = false;
       this.profileService.updateProfile(this.currentProfileId, newProfile ); //but I think this wrong, shouldn't it be currentProduct?
       console.log("this is running")
     } 
