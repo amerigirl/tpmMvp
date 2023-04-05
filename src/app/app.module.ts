@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { TeacherPortalComponent } from './teacher-portal/teacher-portal.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientJsonpModule } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { defineCustomElements } from '@bds/bds-core/loader';
+import { BdsNgModule } from '@bds/bds-ng';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     AppRoutingModule,
     FormsModule,
     HttpClientJsonpModule,
-    HttpClientModule
+    HttpClientModule,
+    BdsNgModule
   ],
   providers: [
 
@@ -34,4 +35,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+ 
+defineCustomElements(window)
+
+  }
+}

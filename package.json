@@ -18,9 +18,12 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
+    "@bds/bds-core": "^1.36.0",
+    "@bds/bds-ng": "^1.36.0",
     "cors": "^2.8.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vsts-npm-auth": "^0.42.1",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
@@ -35,8 +38,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  
   }
-
-  
 }
