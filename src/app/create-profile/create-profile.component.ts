@@ -6,6 +6,8 @@ import { NgForm } from '@angular/forms';
 import { TitleStrategy } from '@angular/router';
 import { style } from '@angular/animations';
 import { elementAt } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 
 @Component({
@@ -28,6 +30,7 @@ export class CreateProfileComponent implements OnInit{
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
   //creates profiles with alert
+  //
   onProfileCreate(newProfile: { 
     
     fname: string, 
@@ -42,6 +45,7 @@ export class CreateProfileComponent implements OnInit{
     }) {  
    
           if(!this.editmode){
+            //created a profile w/o id to avoid update issue
             let tempProfile = { fname: newProfile.fname, mname:newProfile.mname, lname: newProfile.lname,  taddress: newProfile.taddress, temailAddress:newProfile.temailAddress, tlocation: newProfile.tlocation, tstandard:newProfile.tstandard}
             this.profileService.createProfile(tempProfile);
             alert("Your form was submitted!") 
