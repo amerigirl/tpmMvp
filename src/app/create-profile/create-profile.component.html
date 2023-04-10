@@ -1,6 +1,6 @@
 <body>
   <div>
-    <hrb-button>Hello</hrb-button>
+   <h1 class="title">Let's Update Your Profile!</h1>
     <br>
     <h4 class="subHeading">You can view and update your current profile, or create another one below!</h4>
   </div>
@@ -10,6 +10,7 @@
   <h2>Current profiles</h2>
   <br>
 
+  <!-- Table headers -->
   <div>
     <table>
       <tr>
@@ -21,10 +22,11 @@
         <th> Email </th>
         <th> Location </th>
         <th> Standard</th>
-
       </tr>
   <br>
   <br>
+
+  <!-- grabs profiles from the backend -->
      <tr *ngFor="let profile of allProfiles; index as i" >
       <td>{{i + 1 }}</td>
       <td>{{profile.fname}}</td>
@@ -45,6 +47,8 @@
   <br>
   <br>
   <h2>Create New Profile Below</h2>
+  <h6 style="color: red;">* indicates required field</h6>
+  <br>
   </div>
 
   <div class="container">
@@ -52,8 +56,11 @@
 
       <form #cForm="ngForm"   (ngSubmit)="onProfileCreate(cForm.value)" name="cForm">
        
-        <label>First Name</label><br>
-        <input  type="text"  name="fname" #name="ngModel"  ngModel  >
+        <label>*First Name</label><br>
+        <input  type="text"  name="fname" #name="ngModel"  ngModel required >
+        <div *ngIf="name.invalid && name.touched">
+          <small class="small">First name is required</small>
+        </div>
         <br>
         <br>
 
@@ -62,23 +69,36 @@
         <br>
         <br>
 
-        <label>Last Name</label><br>
-        <input  type="text" name="lname" #name="ngModel" ngModel   >
+        <label>*Last Name</label><br>
+        <input  type="text" name="lname" #lname="ngModel" ngModel required  >
+        <div *ngIf="lname.invalid && lname.touched">
+          <small class="small">Last name is required</small>
+        </div>
         <br>
         <br>
         
-        <label>Street Address</label><br>
-        <input   name="taddress" type="text"  #name="ngModel" ngModel >
+        <label>*Street Address</label><br>
+        <input   name="taddress" type="text"  #Aname="ngModel" ngModel required>
+        <div *ngIf="Aname.invalid && Aname.touched">
+          <small class="small">Address is required </small>
+        </div>
         <br>
         <br>
         
-        <label>Email Address</label><br>
-        <input  type="text" name="temailAddress"   #name="ngModel" ngModel  >
+        <label>*Email Address</label><br>
+        <input  type="email" name="temailAddress"   #Ename="ngModel" ngModel email required >
+        <div *ngIf="Ename.touched && !Ename.valid">
+          <small style="color:red">This is not a valid email address</small>
+     
+        </div>
         <br>
         <br>
         
-        <label>Work Location</label><br>
-        <input   type="text" name="tlocation" #name="ngModel" placeholder="virtual or in-person" ngModel >
+        <label>*Work Location</label><br>
+        <input   type="text" name="tlocation" #Wname="ngModel" placeholder="virtual or in-person" ngModel required>
+        <div *ngIf="Wname.invalid && Wname.touched">
+          <small class="small">Location is required</small>
+        </div>
         <br>
         <br>
         
@@ -90,7 +110,7 @@
         <label>Id</label><br>
         <input name="id" type="text"  #name="ngModel" ngModel ><br><br>
        
-        <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" >
+        <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" [disabled]="!cForm.valid">
             
       </form>
        

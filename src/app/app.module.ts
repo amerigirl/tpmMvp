@@ -8,9 +8,7 @@ import { TeacherPortalComponent } from './teacher-portal/teacher-portal.componen
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { defineCustomElements } from '@bds/bds-core/loader';
-import { BdsNgModule } from '@bds/bds-ng';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -27,18 +25,16 @@ import { BdsNgModule } from '@bds/bds-ng';
     FormsModule,
     HttpClientJsonpModule,
     HttpClientModule,
-    BdsNgModule
+    
+    
   ],
   providers: [
 
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
   constructor(){
  
-defineCustomElements(window)
-
   }
 }

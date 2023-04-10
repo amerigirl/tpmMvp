@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 import { TitleStrategy } from '@angular/router';
 import { style } from '@angular/animations';
 import { elementAt } from 'rxjs';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 
 
@@ -25,7 +25,8 @@ export class CreateProfileComponent implements OnInit{
   editmode: boolean = false;
   noIdBox: boolean = false;
   currentProfileId!: string;
-
+pattern: any;
+  //isValid = false;
   
   constructor(private http: HttpClient, private profileService: ProfileService){}
 
@@ -47,13 +48,13 @@ export class CreateProfileComponent implements OnInit{
           if(!this.editmode){
             //created a profile w/o id to avoid update issue
             let tempProfile = { fname: newProfile.fname, mname:newProfile.mname, lname: newProfile.lname,  taddress: newProfile.taddress, temailAddress:newProfile.temailAddress, tlocation: newProfile.tlocation, tstandard:newProfile.tstandard}
+
             this.profileService.createProfile(tempProfile);
             alert("Your form was submitted!") 
             location.reload();
 
           } else if(this.editmode) {
-            console.log("edit mode should be true")
-            this.profileService.updateProfile(this.currentProfileId, newProfile ); 
+           this.profileService.updateProfile(this.currentProfileId, newProfile ); 
            alert("Update Complete!")
            location.reload();
           } 
@@ -75,7 +76,7 @@ export class CreateProfileComponent implements OnInit{
 
 
   onEditClicked(id:string){
-    this.privateonProfilesFetch();
+    this.privateonProfilesFetch(); // from profile.service
     this.currentProfileId = id;
      
       let currentProduct = this.allProfiles.find((p)=>{return p.id == id})
