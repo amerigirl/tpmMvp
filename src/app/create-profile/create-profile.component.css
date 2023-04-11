@@ -22,3 +22,12 @@ input.ng-invalid.ng-touched{
 .small{
     color: red;
 }
+
+td:nth-child(1){
+    width:5%
+}
+
+.table{
+    width: 100%;
+}
+

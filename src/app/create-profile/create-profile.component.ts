@@ -65,6 +65,7 @@ pattern: any;
   //assigns the profiles we get from the service to the allProfiles array
   ngOnInit(){
     this.privateonProfilesFetch();
+    
   }
 
   privateonProfilesFetch(){
@@ -73,6 +74,7 @@ pattern: any;
       this.allProfiles = profiles;
     });
   }
+
 
 
   onEditClicked(id:string){

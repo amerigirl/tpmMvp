@@ -9,6 +9,9 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StudentPortalComponent } from './student-portal/student-portal.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { NgModule } from '@angular/core';
     LandingComponent,
     TeacherPortalComponent,
     CreateProfileComponent,
+    StudentPortalComponent,
+    
 
   ],
 
@@ -25,6 +30,8 @@ import { NgModule } from '@angular/core';
     FormsModule,
     HttpClientJsonpModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule
     
     
   ],

@@ -12,35 +12,38 @@
 
   <!-- Table headers -->
   <div>
-    <table>
-      <tr>
-        <th>#</th>
-        <th> First </th>
-        <th> Middle </th>
-        <th> Last </th>
-        <th> Address</th>
-        <th> Email </th>
-        <th> Location </th>
-        <th> Standard</th>
-      </tr>
+    <table class="table">
+      <thead>
+        <tr class="heading">
+          <th> #</th>
+          <th> First  </th> 
+          <th> Middle </th>
+          <th> Last  </th>
+          <th> Address</th>
+          <th> Email </th>
+          <th> Location </th>
+        </tr>
+      </thead>
   <br>
   <br>
+      <body>
 
+      
   <!-- grabs profiles from the backend -->
      <tr *ngFor="let profile of allProfiles; index as i" >
-      <td>{{i + 1 }}</td>
+      <td>{{i + 1}}</td>
       <td>{{profile.fname}}</td>
       <td>{{profile.mname}}</td>
       <td>{{profile.lname}}</td>
-      <td>{{profile.taddress}}</td>
+      <br><td>{{profile.taddress}}</td>
       <td>{{profile.temailAddress}}</td>
-      <td>{{profile.tlocation}}</td>
-      <td>{{profile.tstandard}}</td>
-
+      <td>{{profile.tlocation}}</td><br><br>
+    
 
       <td><button (click)="onEditClicked(profile.id)">Edit</button></td>
       <td><button (click)="onDeleteProfile(profile.id)">Delete</button></td>
      </tr>
+    </body>
    </table>
    
   </div>
@@ -101,19 +104,14 @@
         </div>
         <br>
         <br>
-        
-        <label>Standard</label><br>
-        <input type="text"  name="tstandard"  #name="ngModel" ngModel >
-        <br>
-        <br>
-
+    
         <label>Id</label><br>
         <input name="id" type="text"  #name="ngModel" ngModel ><br><br>
        
         <input type="submit"  value="{{ !editmode ?  'Create Profile'  : 'Update Profile'}}" [disabled]="!cForm.valid">
             
       </form>
-       
+     
     </div>
   </div>
 </body>

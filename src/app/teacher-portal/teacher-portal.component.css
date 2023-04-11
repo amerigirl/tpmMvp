@@ -13,10 +13,10 @@
 
 .image{
   height:400px;
-  margin-left: 1280px;
-  position: sticky;
-
-}
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
 
 .choice{
   margin-left: 900px;
@@ -31,8 +31,8 @@ margin-top: 50px;
 }
 
 .create{
-margin-left: 1500px;
-font-size: 25px;
-margin-top: 50px;
+font-size: 20px;
+margin-left: 550px;
+margin-top: 25px;
 }
 
