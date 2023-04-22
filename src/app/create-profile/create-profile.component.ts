@@ -25,7 +25,7 @@ export class CreateProfileComponent implements OnInit{
   editmode: boolean = false;
   noIdBox: boolean = false;
   currentProfileId!: string;
-pattern: any;
+  pattern: any;
   //isValid = false;
   
   constructor(private http: HttpClient, private profileService: ProfileService){}

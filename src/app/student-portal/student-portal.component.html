@@ -1,1 +1,61 @@
-<p>student-portal works!</p>
+<br><br>
+<div class="container">
+    <div class="form">
+
+      <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit(reactiveForm.value)">
+       
+        <label for="fname">First Name</label><br>
+        <input type="text" id="fname" placeholder="first name"  formControlName="fname">
+        <br>
+        <br>
+
+        <label for="mname">Middle Name</label><br>
+        <input type="text" name="mname" placeholder="middle name" formControlName="mname">
+        <br>
+        <br>
+
+        <label for="lname">Last Name</label><br>
+        <input  type="text" name="lname" placeholder="last name" formControlName="lname">
+        <br>
+        <br>
+        
+        <label for="saddress">Street Address</label><br>
+        <input   name="saddress" type="text" placeholder="address" formControlName="Saddress">
+        <br>
+        <br>
+        
+        <label for="semailAddress">Email Address</label><br>
+        <input  type="email" name="SemailAddress" placeholder="email" formControlName="SemailAddress">
+        <br>
+        <br>
+
+        <label for="slocation">School Location</label><br>
+        <input   type="text" name="Slocation" placeholder="virtual or in-person" formControlName="StotalMarks">
+        <br>
+        <br>
+        
+        <label for="sstandard">Standard</label><br>
+        <input   type="text" name="Sstandard" placeholder="virtual or in-person" formControlName="Sstandard">
+        <br>
+        <br>
+        
+        <label for="stotalMarks">Total Marks</label><br>
+        <input   type="text" name="StotalMarks" placeholder="virtual or in-person" formControlName="StotalMarks">
+        <br>
+        <br>
+
+        <label for="stotalMarks">Grade</label><br>
+        <input   type="text" name="Sgrade" placeholder="virtual or in-person" formControlName="Sgrade">
+        <br>
+        <br>
+
+        <label>Id</label><br>
+        <input name="id" type="text" formControlName="id"><br><br>
+       
+     <button type="submit" name="SubmitButton">Submit</button>
+
+      </form>
+     
+    </div>
+
+  </div>

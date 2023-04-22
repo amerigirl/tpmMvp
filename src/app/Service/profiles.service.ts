@@ -2,12 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs";
 import { Profile } from "../model/profile";
+import { StudentPortalComponent } from "../student-portal/student-portal.component";
+import { studentProfile } from "../model/studentProfile";
 
 
 
 @Injectable({providedIn: "root"})
 export class ProfileService{
 url = 'https://localhost:7142/api/Teachers';
+urlStudent = 'https://localhost:7142/api/Students';
 
 headers = new HttpHeaders({
   'Content-Type': 'application/json',
@@ -17,13 +20,19 @@ headers = new HttpHeaders({
     
 constructor(private http: HttpClient){}
 
-//creates profile in the database
+//creates Teacher profile in the database
 createProfile(newProfile:any){
    
   this.http.post<any>(this.url, newProfile, {headers: this.headers})
-    .subscribe((res) => {   
-    });
+    .subscribe((res) => {});
 
+}
+
+//creates Student profile in the database
+createStudentProfile(newStudentProfile: any){
+  
+  this.http.post<any>(this.urlStudent, newStudentProfile, {headers: this.headers})
+  .subscribe((res) =>{});
 }
 
 //fetch profiles from the database
@@ -43,6 +52,20 @@ fetchProfile(){
     return profiles;
     }));
 
+  }
+
+
+  fetchStudentProfile(){
+    return this.http.get<{[key: string]: studentProfile}>('https://localhost:7142/api/Students')
+    .pipe(map((res:any) =>{
+      const studentProfiles = [];
+
+      for(const key in res) {
+        if(res.hasOwnProperty(key))
+        studentProfiles.push({...res[key]});
+      }
+      return studentProfiles;
+    }))
   }
 
  //updating the current product
